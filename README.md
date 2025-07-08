@@ -89,3 +89,99 @@ Uses Ultralytics YOLOv8 to detect:
 ```bash
 git clone <your-repo-url>
 cd <your-project-directory>
+
+### 2️⃣ Install Dependencies
+It is highly recommended to use a virtual environment:
+
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+Dependencies include:
+
+Flask
+
+OpenCV (opencv-python)
+
+Ultralytics (YOLOv8)
+
+google-cloud-storage
+
+google-auth
+
+Note: You must also install any additional dependencies YOLOv8 requires (e.g., PyTorch).
+
+### 3️⃣ Configure Google Cloud Service Account
+Create a Service Account JSON Key with Storage Object Admin permission.
+
+Replace SERVICE_ACCOUNT_INFO in app.py with your credentials.
+
+### 4️⃣ Update RTSP URL
+In app.py, configure:
+
+python
+Copy
+Edit
+rtsp_url = 'rtsp://<username>:<password>@<camera-address>/...'
+### ▶️ Running the Application
+bash
+Copy
+Edit
+python app.py
+The server will start on:
+
+cpp
+Copy
+Edit
+http://0.0.0.0:5000/
+Open this URL in your browser to access the live stream and controls.
+
+🌐 Endpoints
+Endpoint	Purpose
+/	Main web interface (stream, logs, ROI controls)
+/stream	MJPEG video stream
+/update_config	Update camera configuration
+/update_rois	Save/update ROIs
+/events_json	Retrieve event log as JSON
+/inference_json	Retrieve inference log as JSON
+/frame_dimensions	Get frame dimensions (for scaling ROIs)
+
+🛠️ Customization
+⚡ Adjust Detection Classes and Thresholds
+In app.py, modify:
+
+python
+Copy
+Edit
+CONFIDENCE_THRESHOLD = 0.7
+person_class_id = 0
+cell_phone_class_id = 67
+vehicle_class_ids = [1, 2, 3, 5, 7]
+Change these to detect additional objects as needed.
+
+🛑 Alert Timing and Distance
+Adjust timing and distance thresholds:
+
+python
+Copy
+Edit
+DWELL_TIME = 60          # seconds
+WARNING_TIME = 45        # seconds
+MOVE_THRESHOLD = 40      # pixels
+📸 Screenshots
+(Add screenshots of your live stream page, event logs, and ROI drawing interface here)
+
+📄 License
+MIT License
+(Or your preferred license)
+
+🧠 Credits
+Built with:
+
+Ultralytics YOLOv8
+
+Flask
+
+Google Cloud Storage
