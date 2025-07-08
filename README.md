@@ -1,6 +1,6 @@
 # 🚀 Smart Video Analytics Platform
 
-A Flask web application for real-time video analytics powered by **YOLOv8 object detection** and **Google Cloud Storage** integration.
+A Flask web application for **real-time video analytics** powered by **YOLOv8 object detection** and **Google Cloud Storage** integration.
 
 It allows you to:
 
@@ -39,7 +39,7 @@ Uses Ultralytics YOLOv8 to detect:
 ### 🗺️ Configurable ROIs
 - Draw ROIs in the browser
 - Save them with custom labels
-- Detection results filtered by ROI
+- Filter detection results by ROI
 
 ---
 
@@ -52,12 +52,12 @@ Uses Ultralytics YOLOv8 to detect:
 ---
 
 ### ☁️ Cloud Storage Integration
-- Snapshots of events uploaded to Google Cloud Storage
+- Automatically uploads event snapshots to Google Cloud Storage
 
 ---
 
 ### ⚡ Dynamic Camera Configuration
-- Update Camera ID, Station Number, and Customer ID via the UI
+- Update Camera ID, Station Number, and Customer ID via the web UI
 
 ---
 
@@ -67,13 +67,13 @@ Uses Ultralytics YOLOv8 to detect:
 
 **Flask Backend**
 - Streams RTSP video
-- Runs YOLOv8 detection & tracking
+- Runs YOLOv8 detection and tracking
 - Processes event logic
-- Provides REST API for config, events, and ROI management
+- Exposes REST APIs for configuration, events, and ROI management
 
 **Frontend**
-- HTML5/CSS3/JavaScript (single-page)
-- Video stream with overlaid detections
+- HTML5 / CSS3 / JavaScript single-page app
+- Live video stream with overlaid detections
 - ROI drawing canvas
 - Event logs and inference logs
 
@@ -89,8 +89,7 @@ Uses Ultralytics YOLOv8 to detect:
 ```bash
 git clone <your-repo-url>
 cd <your-project-directory>
-
-### 2️⃣ Install Dependencies
+2️⃣ Install Dependencies
 It is highly recommended to use a virtual environment:
 
 bash
@@ -105,7 +104,7 @@ Flask
 
 OpenCV (opencv-python)
 
-Ultralytics (YOLOv8)
+Ultralytics YOLOv8
 
 google-cloud-storage
 
@@ -113,24 +112,26 @@ google-auth
 
 Note: You must also install any additional dependencies YOLOv8 requires (e.g., PyTorch).
 
-### 3️⃣ Configure Google Cloud Service Account
+3️⃣ Configure Google Cloud Service Account
 Create a Service Account JSON Key with Storage Object Admin permission.
 
 Replace SERVICE_ACCOUNT_INFO in app.py with your credentials.
 
-### 4️⃣ Update RTSP URL
-In app.py, configure:
+4️⃣ Update RTSP URL
+In app.py, set your camera stream:
 
 python
 Copy
 Edit
-rtsp_url = 'rtsp://<username>:<password>@<camera-address>/...'
-### ▶️ Running the Application
+rtsp_url = "rtsp://<username>:<password>@<camera-address>/..."
+▶️ Running the Application
+Start the server:
+
 bash
 Copy
 Edit
 python app.py
-The server will start on:
+The server will run at:
 
 cpp
 Copy
@@ -144,8 +145,8 @@ Endpoint	Purpose
 /stream	MJPEG video stream
 /update_config	Update camera configuration
 /update_rois	Save/update ROIs
-/events_json	Retrieve event log as JSON
-/inference_json	Retrieve inference log as JSON
+/events_json	Retrieve event logs as JSON
+/inference_json	Retrieve inference logs as JSON
 /frame_dimensions	Get frame dimensions (for scaling ROIs)
 
 🛠️ Customization
@@ -156,13 +157,14 @@ python
 Copy
 Edit
 CONFIDENCE_THRESHOLD = 0.7
+
 person_class_id = 0
 cell_phone_class_id = 67
 vehicle_class_ids = [1, 2, 3, 5, 7]
-Change these to detect additional objects as needed.
+Change these IDs to detect other objects as needed.
 
 🛑 Alert Timing and Distance
-Adjust timing and distance thresholds:
+Adjust alert thresholds:
 
 python
 Copy
@@ -171,7 +173,7 @@ DWELL_TIME = 60          # seconds
 WARNING_TIME = 45        # seconds
 MOVE_THRESHOLD = 40      # pixels
 📸 Screenshots
-(Add screenshots of your live stream page, event logs, and ROI drawing interface here)
+Add screenshots of your live stream page, event logs, and ROI drawing interface here.
 
 📄 License
 MIT License
