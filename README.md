@@ -89,12 +89,11 @@ Uses Ultralytics YOLOv8 to detect:
 ```bash
 git clone <your-repo-url>
 cd <your-project-directory>
-2️⃣ Install Dependencies
+
+### 2️⃣ Install Dependencies
 It is highly recommended to use a virtual environment:
 
-bash
-Copy
-Edit
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -112,24 +111,20 @@ google-auth
 
 Note: You must also install any additional dependencies YOLOv8 requires (e.g., PyTorch).
 
-3️⃣ Configure Google Cloud Service Account
+### 3️⃣ Configure Google Cloud Service Account
 Create a Service Account JSON Key with Storage Object Admin permission.
 
 Replace SERVICE_ACCOUNT_INFO in app.py with your credentials.
 
-4️⃣ Update RTSP URL
+### 4️⃣ Update RTSP URL
 In app.py, set your camera stream:
 
-python
-Copy
-Edit
+```bash
 rtsp_url = "rtsp://<username>:<password>@<camera-address>/..."
-▶️ Running the Application
+### ▶️ Running the Application
 Start the server:
 
-bash
-Copy
-Edit
+```bash
 python app.py
 The server will run at:
 
@@ -139,7 +134,7 @@ Edit
 http://0.0.0.0:5000/
 Open this URL in your browser to access the live stream and controls.
 
-🌐 Endpoints
+### 🌐 Endpoints
 Endpoint	Purpose
 /	Main web interface (stream, logs, ROI controls)
 /stream	MJPEG video stream
@@ -149,7 +144,7 @@ Endpoint	Purpose
 /inference_json	Retrieve inference logs as JSON
 /frame_dimensions	Get frame dimensions (for scaling ROIs)
 
-🛠️ Customization
+### 🛠️ Customization
 ⚡ Adjust Detection Classes and Thresholds
 In app.py, modify:
 
@@ -163,7 +158,7 @@ cell_phone_class_id = 67
 vehicle_class_ids = [1, 2, 3, 5, 7]
 Change these IDs to detect other objects as needed.
 
-🛑 Alert Timing and Distance
+### 🛑 Alert Timing and Distance
 Adjust alert thresholds:
 
 python
@@ -172,14 +167,14 @@ Edit
 DWELL_TIME = 60          # seconds
 WARNING_TIME = 45        # seconds
 MOVE_THRESHOLD = 40      # pixels
-📸 Screenshots
+### 📸 Screenshots
 Add screenshots of your live stream page, event logs, and ROI drawing interface here.
 
-📄 License
+### 📄 License
 MIT License
 (Or your preferred license)
 
-🧠 Credits
+### 🧠 Credits
 Built with:
 
 Ultralytics YOLOv8
